@@ -42,10 +42,11 @@ data = pd.DataFrame(data, columns=columns)
 # print(data.shape)
 # (506, 13)
 
-# 3. 2nd Machine Learning Model: Simple Linear Regression
+# 3. 3rd Machine Learning Model: Decision Tree Regressor
 X_train, X_test, y_train, y_test = train_test_split(data, label, test_size=0.2,random_state=2022) 
 # We are using X_train['RM']
 # But X_train['RM] is not enough to teach machine, need to be 2D+, But ['RM']is 1D
 # add , blank by reshape(-1,1), -1,1 = all
 X_train['RM'].values.reshape(-1,1)[:5]
 
+dt_regr = DecisionTreeRegressor(max_depth=4)
