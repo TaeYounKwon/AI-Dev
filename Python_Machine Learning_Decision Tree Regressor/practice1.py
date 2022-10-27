@@ -49,4 +49,35 @@ X_train, X_test, y_train, y_test = train_test_split(data, label, test_size=0.2,r
 # add , blank by reshape(-1,1), -1,1 = all
 X_train['RM'].values.reshape(-1,1)[:5]
 
-dt_regr = DecisionTreeRegressor(max_depth=4)
+dt_regr = DecisionTreeRegressor(max_depth=2)
+
+dt_regr.fit(X_train['RM'].values.reshape((-1,1)), y_train)
+
+y_pred = dt_regr.predict(X_test['RM'].values.reshape(-1,1))
+
+print('Simple Decision Tree R2: {:.4f}'.format(r2_score(y_test, y_pred)))
+arr = np.arange(1,11)
+
+best_depth = 0
+best_r2 = 0
+
+for depth in arr:
+  dt_regr = DecisionTreeRegressor(max_depth=depth)
+  dt_regr.fit(X_train['RM'].values.reshape((-1,1)), y_train)
+  y_pred = dt_regr.predict(X_test['RM'].values.reshape(-1,1))
+  
+  temp_r2 = r2_score(y_test, y_pred)
+  #print('\Simple Decision Tree Regression depth={} R2: {:.4f}'.format(depth, temp_r2))
+
+  if best_r2 < temp_r2:
+    best_depth = depth
+    best_r2 = temp_r2
+
+print('Best Depth Result ={} R2={:.4f}'.format(best_depth, best_r2))
+
+dt_regr = DecisionTreeRegressor(max_depth=8)
+dt_regr.fit(X_train, y_train)
+
+y_pred = dt_regr.predict(X_test)
+print('Multi Decision Tree R2: {:.4f}'.format(r2_score(y_test, y_pred)))
+
