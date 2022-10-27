@@ -1,14 +1,14 @@
-from statistics import linear_regression
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import warnings
+
 warnings.filterwarnings('ignore')
 plt.style.use('dark_background')
 
 from sklearn.datasets import load_boston
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import r2_score
 
 
@@ -48,37 +48,4 @@ X_train, X_test, y_train, y_test = train_test_split(data, label, test_size=0.2,r
 # But X_train['RM] is not enough to teach machine, need to be 2D+, But ['RM']is 1D
 # add , blank by reshape(-1,1), -1,1 = all
 X_train['RM'].values.reshape(-1,1)[:5]
-sim_lr = LinearRegression()
 
-sim_lr.fit(X_train['RM'].values.reshape((-1,1)),y_train)
-
-y_pred = sim_lr.predict(X_test['RM'].values.reshape((-1,1)))
-
-# Check Result
-
-print('Simple Linear Regression R2: {:4F}'.format(r2_score(y_test,y_pred)))
-
-# 4. Result Visualization
-line_x = np.linspace(np.min(X_test['RM']),np.max(X_test['RM']),10)
-line_y = sim_lr.predict(line_x.reshape(-1,1))
-
-fig = plt.figure()
-plt.scatter(X_test['RM'],y_test,s=10,c='white',alpha=0.8)
-plt.plot(line_x,line_y,c='yellow')
-plt.legend(['Test data sample','Regression line'], loc='upper left')
-# plt.show()
-plt.figure().savefig('my_figure.png')
-
-# 5. Conclusion. 
-# From the result, with the Number of room data is not enough to teach machine(dots are out of regression line)
-# Using more data set is required to train the machine
-
-# 6. Multiple Linear Regression
-mul_lr = LinearRegression()
-
-# Give much more info
-mul_lr.fit(X_train,y_train) # differnt from sim_lr.fit(X_train['RM'].values.reshape((-1,1)),y_train)
-y_pred2 = mul_lr.predict(X_test)
-
-# Check Result
-print('Multi Linear Regression R2: {:4F}'.format(r2_score(y_test,y_pred2)))
