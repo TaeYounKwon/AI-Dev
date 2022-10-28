@@ -82,9 +82,9 @@ pd.plotting.scatter_matrix(iris_dataframe, figsize=(15,15), c=Y_train, marker='o
 
 
 plt.style.use('dark_background')
-fig = plt.figure()
+
+plt.savefig('my_figure.png')
 #plt.show()
-fig.savefig('my_figure.png')
 
 # 4. 1st Machine Learning Model: KNeighbors algorithm
 from sklearn.neighbors import KNeighborsClassifier

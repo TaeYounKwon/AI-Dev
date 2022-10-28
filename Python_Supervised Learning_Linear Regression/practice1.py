@@ -62,12 +62,13 @@ print('Simple Linear Regression R2: {:4F}'.format(r2_score(y_test,y_pred)))
 line_x = np.linspace(np.min(X_test['RM']),np.max(X_test['RM']),10)
 line_y = sim_lr.predict(line_x.reshape(-1,1))
 
-fig = plt.figure()
+
 plt.scatter(X_test['RM'],y_test,s=10,c='white',alpha=0.8)
 plt.plot(line_x,line_y,c='yellow')
 plt.legend(['Test data sample','Regression line'], loc='upper left')
+
+plt.savefig('my_figure.png')
 # plt.show()
-plt.figure().savefig('my_figure.png')
 
 # 5. Conclusion. 
 # From the result, with the Number of room data is not enough to teach machine(dots are out of regression line)
