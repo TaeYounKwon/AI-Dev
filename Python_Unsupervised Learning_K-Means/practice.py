@@ -45,13 +45,3 @@ plt.scatter(data[:,0],data[:,1], c=cluster,
 plt.savefig('my_figure.png')
 plt.show()
 
-
-from scipy.cluster.hierarchy import dendrogram
-plt.figure(figsize=(10,10))
-children = single_clustering.children_
-distance = np.arange(children.shape[0])
-no_of_observations = np.arange(2, children.shape[0]+2)
-linkage_matrix = np.column_stack([children, distance, no_of_observations]).astype(float)
-
-dendrogram(linkage_matrix, p=len(data), labels=single_cluster,
-           show_contracted=True, no_labels=True)
