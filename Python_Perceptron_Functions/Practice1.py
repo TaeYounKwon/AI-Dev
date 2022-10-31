@@ -31,6 +31,20 @@ def ReLu(x):
 def identity_function(x):
     return x    
 
+# Softmax(a)
+def Softmax(a):
+  exp_a = np.exp(a)
+  sum_exp_a = np.sum(exp_a)
+  y = exp_a / sum_exp_a
+
+  return y
+
+print("SoftMax")
+a = np.array([0.3,0.2,3.0,-1.2])
+print(Softmax(a))
+print(np.sum(Softmax(a)))
+
+print("-----------------------")
 print("Step Function")
 print(step_function(-3))
 print(step_function(5))    
@@ -39,6 +53,8 @@ print("-----------------------")
 print("Sigmoid Function")
 print(sigmoid(3))
 print(sigmoid(-3))
+
+
 
 plt.grid()
 x = np.arange(-5,5,0.01)
