@@ -30,3 +30,14 @@ c = a*b
 print(c) # [10 20 30 40]
 print(c.shape) # (4,)
 print(np.ndim(c)) # 1
+
+#Transposed Vector
+print('----------------------')
+A = np.array([[1,2,3],[4,5,6]])
+print(A) # [1 2 3]
+         # [4 5 6]
+print(A.shape) # (2, 3)
+print(np.ndim(A)) # 2
+
+print('----------------------')
+A_ = A.T
