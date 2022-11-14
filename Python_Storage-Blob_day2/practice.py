@@ -2,7 +2,10 @@ import os, uuid
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 
 # Blob 서비스에 연결합니다. 
-connect_string = 'DefaultEndpointsProtocol=https;AccountName=labuser50storage2;AccountKey=4/+IBlBuyX5mLi6wUGWCmIObd+pHMeNy+tUrg48p8bkf0AFbaP1PrCVwPUd1tMRQpJs3sZdbCr/S+AStmZZAdw==;EndpointSuffix=core.windows.net'
+connect_string = 'DefaultEndpointsProtocol=https;\
+                  AccountName=#;\
+                  AccountKey=#;\
+                  EndpointSuffix=core.windows.net'
 
 blob_service_client = BlobServiceClient.from_connection_string(connect_string)
 
