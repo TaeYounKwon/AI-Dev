@@ -61,3 +61,4 @@ print('Label: {}'.format(label[0]))
 
 fig.savefig('my_figure.png')
 plt.show()
+
