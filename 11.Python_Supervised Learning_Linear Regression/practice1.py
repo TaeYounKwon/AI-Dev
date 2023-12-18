@@ -1,4 +1,4 @@
-from statistics import linear_regression
+import statistics
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -6,13 +6,13 @@ import warnings
 warnings.filterwarnings('ignore')
 plt.style.use('dark_background')
 
-from sklearn.datasets import load_boston
+from sklearn.datasets import load_wine
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 
 
-boston = load_boston()
+boston = load_wine()
 
 # 1. Check data info, type, structure, 
 # print(boston_dataset)
